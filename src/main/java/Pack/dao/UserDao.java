@@ -20,16 +20,4 @@ public class UserDao {
 		
 		return (result != null) ? true : false;		
 	}
-	
-	public UserDTO login(UserDTO dto) {
-		UserDTO user = (UserDTO)JdbcTemplate.getInstance().proxy(new Delegate() {
-			
-			@Override
-			public Object delegate(SqlSession session) {
-				return session.selectOne("login", dto.getId());
-			}
-		});
-		
-		return user;
-	}
 }
